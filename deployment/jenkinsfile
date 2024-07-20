@@ -35,7 +35,7 @@ pipeline {
             steps {
                 echo 'Pushing the Docker image to Docker Hub...'
                 withCredentials([usernamePassword(credentialsId: 'dockerHub', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-                    sh 'echo $PASSWORD | docker login -u $USERNAME -p $PASSWORD'
+                    sh 'echo $PASSWORD | docker login -u $USERNAME --password-stdin $PASSWORD'
                     sh "docker push ${DOCKERHUB_USERNAME}/${DOCKERHUB_REPO}:${IMAGE_TAG}"
                     sh 'docker logout'
                 }
