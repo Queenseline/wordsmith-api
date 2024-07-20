@@ -20,7 +20,7 @@ pipeline {
         stage('Build Application') {
             steps {
                 echo 'Building the application...'
-                sh 'mvn clean package' // Assuming you are using Maven to build the Java application
+                sh 'mvn  package' // Assuming you are using Maven to build the Java application
             }
         }
 
